@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      table,
+      td,
+      th {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 30px;
+        background-color: #9b9bf0;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 120px;
+        height: 68px;
+      }
+
+      .switch input {
+        display: none;
+      }
+
+      .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 52px;
+        width: 52px;
+        left: 8px;
+        bottom: 8px;
+        background-color: #fff;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 68px;
+      }
+
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(52px);
+        -ms-transform: translateX(52px);
+        transform: translateX(52px);
+      }
+    </style>
+    <script>
+      function toggleCheckbox(e) {
+        var n = new XMLHttpRequest();
+        e.checked
+          ? n.open("GET", "/?r=" + e.value + "&a=on", !0)
+          : n.open("GET", "/?r=" + e.value + "&a=off", !0),
+          n.send();
+      }
+      //http://192.168.157.222:8080/?r=1&a=on
+    </script>
+  </head>
+  <body>
+    <h1>App Based Relay Control</h1>
+    <h3>________________</h3>
+    <table style="width: 50%">
+      <tr>
+        <td>Wall Light</td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" value="1" onchange="toggleCheckbox(this)" />
+            <span class="slider"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Spots</td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" value="2" onchange="toggleCheckbox(this)" />
+            <span class="slider"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Cove</td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" value="3" onchange="toggleCheckbox(this)" />
+            <span class="slider"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Socket</td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" value="4" onchange="toggleCheckbox(this)" />
+            <span class="slider"></span>
+          </label>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
